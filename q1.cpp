@@ -75,7 +75,7 @@ vector<DataPoint> singleDataFile(const string& folderPath,int number) {
 }
 
 // Function to train the linear regression model using gradient descent
-pair<float, float> train_linear_regression(const vector<DataPoint> &data, float learning_rate, int epochs) {
+pair<float, float> trainLinearRegression(const vector<DataPoint> &data, float learning_rate, int epochs) {
     float w = 0, b = 0;  // Initialize weight and bias
     for (int epoch = 0; epoch < epochs; ++epoch) {
         float dw = 0, db = 0;
@@ -107,7 +107,7 @@ int main() {
     string folderPath = "dataset";  
     vector<DataPoint> trainingData= readDatasetFiles(folderPath);  
     vector<DataPoint> testData= singleDataFile(folderPath,10);
-    auto [w,b]= train_linear_regression(trainingData,0.01,3000);
+    auto [w,b]= trainLinearRegression(trainingData,0.01,3000);
     cout<<"w = " << w << ", b = " << b << endl;
     
     float rmse = calculate_rmse(testData, w, b);
